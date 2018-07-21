@@ -5,3 +5,5 @@ SUBDIRS += \
     GHogeTest \
     QFooTest \
     QFugaTest
+
+DISTFILES += README.md
