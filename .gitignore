@@ -3,6 +3,7 @@
 
 # ホワイトリスト
 !/QtTestSample/
+!/TestRunSample/
 
 # 共通設定
 *.qmake.stash
