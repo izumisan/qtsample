@@ -10,9 +10,9 @@ QtプラグインのAutoTestにより、QtCreatorから複数のテストプロ�
 
 ### 「テスト」サイドバー
 
-![](images/testsidebar.png "テストサイドバー")
+![testsidebar](images/testsidebar.png "テストサイドバー")
 
 
 ### 「テスト結果」ペイン
 
-![](images/testresultpane.png "テスト結果ペイン")
+![testresultpane](images/testresultpane.png "テスト結果ペイン")
