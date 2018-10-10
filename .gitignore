@@ -2,6 +2,7 @@
 /*/
 
 # ホワイトリスト
+!/QtQuickPractice/
 !/QtTestSample/
 !/TestRunSample/
 
