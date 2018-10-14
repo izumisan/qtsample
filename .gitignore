@@ -4,6 +4,7 @@
 # ホワイトリスト
 !/QtQuickPractice/
 !/QtTestSample/
+!/SignalSlot/
 !/TestRunSample/
 
 # 共通設定
