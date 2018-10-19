@@ -23,4 +23,6 @@
     - QMLシグナルとC++スロットをQML側でコネクトする
     - C++シグナルとQMLスロットをQML側でコネクトする
 - ListViewSample
+    - `ListModel`エレメントにより、QML側でListViewのモデルを指定
 - ListViewSample2
+    - C++側で生成したモデルをListViewのモデルに指定
