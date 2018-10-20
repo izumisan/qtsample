@@ -15,18 +15,23 @@ Window {
         ScrollBar.vertical: ScrollBar{}
 
         model: ListModel {
-            ListElement { name: "item 1" }
-            ListElement { name: "item 2" }
-            ListElement { name: "item 3" }
-            ListElement { name: "item 4" }
-            ListElement { name: "item 5" }
-            ListElement { name: "item 6" }
-            ListElement { name: "item 7" }
-            ListElement { name: "item 8" }
-            ListElement { name: "item 9" }
-            ListElement { name: "item 10" }
-            ListElement { name: "item 11" }
-            ListElement { name: "item 12" }
+            ListElement { name: "ほわいと" }
+            ListElement { name: "black" }
+            ListElement { name: "cyan" }
+            ListElement { name: "darkCyan" }
+            ListElement { name: "red" }
+            ListElement { name: "darkRed" }
+            ListElement { name: "magenta" }
+            ListElement { name: "darkMagenta" }
+            ListElement { name: "green" }
+            ListElement { name: "darkGreen" }
+            ListElement { name: "yellow" }
+            ListElement { name: "darkYellow" }
+            ListElement { name: "blue" }
+            ListElement { name: "darkBlue" }
+            ListElement { name: "gray" }
+            ListElement { name: "darkGray" }
+            ListElement { name: "lightGray" }
         }
 
         delegate: Rectangle {
@@ -37,7 +42,8 @@ Window {
             border.color: "lightgray"
             Label {
                 id: label
-                text: model.name
+                text: model.index + " : " + model.name
+                color: model.name
                 font.pixelSize: 14
                 anchors.centerIn: parent
             }
