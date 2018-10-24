@@ -25,7 +25,9 @@
 - ListViewSample
     - `ListModel`エレメントにより、QML側でListViewのモデルを指定
 - ListViewSample2
-    - C++側で生成したモデルをListViewのモデルに指定
+    - C++側で生成した`QList<T>`モデルをListViewのモデルに指定
+- ListViewSample3
+    - `QQmlListProperty<T>`を利用したサンプル
 
 # Note: C++/QML連携
 
@@ -56,6 +58,11 @@
 - C++ getter/setterメソッドを、`Q_PROPERTY`マクロでエクスポートする
     ```cpp
     Q_PROPERTY(int value READ value WRITE setValue NOTIFY valueChanged)
+    ```
+
+- リスト（配列）プロパティをエクスポートする場合は、`QQmlListProperty<T>`とする
+    ```cpp
+    Q_PROPERTY(QQmlListProperty<Foo> fooList READ fooList NOTIFY listSizeChanged)
     ```
 
 ## C++クラスをQMLエレメントとして使用する（C++クラスのエクスポート）
@@ -99,4 +106,5 @@
 - QML側でコネクト
     - `Connections`エレメントでコネクトする
     - C++シグナルはQML側では、`on+シグナル名`となる
+        - 例: [C++] fooUpdated = [QML] onFooUpdated
 - C++シグナルの引数をQMLスロットで受け取る場合、引数の型は`QVariant`にする必要がある
