@@ -28,6 +28,8 @@
     - C++側で生成した`QList<T>`モデルをListViewのモデルに指定
 - ListViewSample3
     - `QQmlListProperty<T>`を利用したサンプル
+- ListViewSample4
+    - `QAbstractListModel`を利用したサンプル
 
 # Note: C++/QML連携
 
@@ -108,3 +110,15 @@
     - C++シグナルはQML側では、`on+シグナル名`となる
         - 例: [C++] fooUpdated = [QML] onFooUpdated
 - C++シグナルの引数をQMLスロットで受け取る場合、引数の型は`QVariant`にする必要がある
+
+## Model - View - Delegate
+
+- [Model Subclassing Reference - Qt Documentation](http://doc.qt.io/qt-5/model-view-programming.html#model-subclassing-reference)
+
+## QAbstractListModelのサブクラス化
+
+- `rowCount()`, `data()`をオーバーライドする
+- `roleNames()`をオーバーライドする
+- `setData()`, `flags()`をオーバーライドする
+- データ追加の前に、`beginInsertRows()`を呼び出す。データ追加の後に、`endInsertRows()`を呼び出す。
+- データ削除の前に、`beginRemoveRows()`を呼び出す。データ削除の後に、`endRemoveRows()`を呼び出す。
