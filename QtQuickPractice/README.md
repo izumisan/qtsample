@@ -16,6 +16,8 @@
 - PropertyBinding3
     - QML側でC++クラスをインポートし、QML側でインスタンスを生成するサンプル
     - `Bindingエレメント`によるバインド
+- PropertyBinding4
+    - `Q_PROPERTY`マクロで自作クラスをQML側に公開したサンプル
 - ConnectOnCpp
     - QMLシグナルとC++スロットをC++側でコネクトする
     - C++シグナルとQMLスロットをC++側でコネクトする
