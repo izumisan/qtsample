@@ -30,6 +30,10 @@
     - `QQmlListProperty<T>`を利用したサンプル
 - ListViewSample4
     - `QAbstractListModel`を利用したサンプル
+    - C++側でインスタンスを生成しているパターン
+- ListViewSample5
+    - `QAbstractListModel`を利用したサンプル
+    - `QAbstractListModel`のサブクラス自体をQML側に登録（`qmlRegisterType`）したパターン
 
 # Note: C++/QML連携
 
