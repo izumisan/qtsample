@@ -36,6 +36,8 @@
 - ListViewSample5
     - `QAbstractListModel`を利用したサンプル
     - `QAbstractListModel`のサブクラス自体をQML側に登録（`qmlRegisterType`）したパターン
+- SingletonTypeProvider
+    - `qmlRegisterSingletonType`により、QML内でのシングルトンクラスとして登録したサンプル
 
 # Note: C++/QML連携
 
