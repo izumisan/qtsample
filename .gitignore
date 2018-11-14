@@ -8,6 +8,7 @@
 !/QtTestSample/
 !/SignalSlot/
 !/TestRunSample/
+!/WPFLikeQtQuick/
 
 # 共通設定
 *.qmake.stash
