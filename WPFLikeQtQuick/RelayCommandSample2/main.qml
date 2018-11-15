@@ -19,7 +19,13 @@ Window {
         anchors.horizontalCenter: parent.horizontalCenter
 
         SpinBox {
-            onValueChanged: vm.value = value
+            id: spinbox
+
+            Binding {
+                target: vm
+                property: "value"
+                value: spinbox.value
+            }
         }
 
         Button {
