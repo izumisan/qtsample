@@ -6,6 +6,8 @@
 MainViewModel::MainViewModel( QObject* parent )
     : QObject(parent)
 {
+    m_command = new viewmodel::RelayCommand( parent, [this]{ doSomething(); } );
+    m_asyncCommand = new viewmodel::RelayAsyncCommand( parent, [this]{ doSomething(); } );
 }
 
 void MainViewModel::doSomething()

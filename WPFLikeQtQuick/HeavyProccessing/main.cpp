@@ -1,9 +1,13 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QThread>
+#include <QDebug>
 #include "mainviewmodel.h"
 
 int main(int argc, char *argv[])
 {
+    qDebug() << "main:" << QThread::currentThreadId();
+
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);

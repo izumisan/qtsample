@@ -8,7 +8,7 @@ import viewmodel 1.0
 Window {
     visible: true
     width: 300
-    height: 200
+    height: 300
     title: qsTr("Heavy Proccessing")
 
     MainViewModel { id: vm }
@@ -38,6 +38,22 @@ Window {
             action: Action {
                 onTriggered: vmfunc()
             }
+        }
+
+        Button {
+            text: "command"
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignHCenter
+
+            action: Command { command: vm.relayCommand }
+        }
+
+        Button {
+            text: "async command"
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignHCenter
+
+            action: Command { command: vm.asyncCommand }
         }
     }
 }
