@@ -9,7 +9,7 @@ Window {
     visible: true
     width: 300
     height: 300
-    title: qsTr("Heavy Proccessing")
+    title: qsTr("RelayCommand Sample 3")
 
     MainViewModel { id: vm }
 
