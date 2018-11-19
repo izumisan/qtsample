@@ -1,6 +1,6 @@
 # WPFLikeQtQuick
 
-QtQuickでMVVM（WPF）するための部品作りに挑戦してみた
+QtQuickでMVVM（WPF）するための部品を試作する検討用プロジェクト
 
 # RelayCommand
 
@@ -11,4 +11,5 @@ QtQuickでMVVM（WPF）するための部品作りに挑戦してみた
     - QML側のバインド＆コネクトを`Command`エレメントとしてコンポーネント化
 - STEP 3: RelayCommandSample3
     - コマンドを非同期で実行する`RelayAsyncCommand`を試作
-- TODO: `canExecuteChanged`シグナルを定期的に発火する仕組み検討
+- STEP 4: RelayCommandSample4
+    - `canExecuteChanged`シグナルの発行を助ける`CommandManager`の試作プロジェクト
