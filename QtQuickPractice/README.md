@@ -38,6 +38,9 @@
     - `QAbstractListModel`のサブクラス自体をQML側に登録（`qmlRegisterType`）したパターン
 - SingletonTypeProvider
     - `qmlRegisterSingletonType`により、QML内でのシングルトンクラスとして登録したサンプル
+- JsonOnQML
+    - C++側からJSON文字列をQML側に公開
+    - QML側でJSON文字列をパースして利用
 
 # Note: C++/QML連携
 
@@ -118,6 +121,16 @@
     - C++シグナルはQML側では、`on+シグナル名`となる
         - 例: [C++] fooUpdated = [QML] onFooUpdated
 - C++シグナルの引数をQMLスロットで受け取る場合、引数の型は`QVariant`にする必要がある
+
+## QMLでJSONをパース
+
+```qml
+var jsonstring = '{"name": "bar", "value": 1.234}'
+var jsonobject = JSON.parse(jsonstring)
+
+console.log( jsonobject.name )
+console.log( jsonobject.value )
+```
 
 ## Model - View - Delegate
 
