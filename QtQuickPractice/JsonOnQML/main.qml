@@ -21,6 +21,7 @@ Window {
         Label { text: _foo.json }
         Label { text: foojsonobj.name }
         Label { text: JSON.parse( _foo.json ).value }
+        Label { text: JSON.parse( _foo.json ).str }
     }
 
     Component.onCompleted: {

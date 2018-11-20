@@ -18,7 +18,7 @@ public:
 public:
     QString json() const
     {
-        return R"({"name": "foo", "value": 1.2})";
+        return R"({"name": "foo","value": 1.2,"str": "1st\n2nd\n3rd"})";
     }
 };
 
