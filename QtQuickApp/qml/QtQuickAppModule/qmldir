@@ -1,0 +1,3 @@
+module QtQuickAppModule
+
+MainView 1.0 MainView.qml

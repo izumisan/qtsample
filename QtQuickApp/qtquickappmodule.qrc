@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/QtQuickAppModule/MainView.qml</file>
+        <file>qml/QtQuickAppModule/qmldir</file>
+    </qresource>
+</RCC>
