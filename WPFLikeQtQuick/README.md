@@ -13,3 +13,8 @@ QtQuickでMVVM（WPF）するための部品を試作する検討用プロジェ
     - コマンドを非同期で実行する`RelayAsyncCommand`を試作
 - STEP 4: RelayCommandSample4
     - `canExecuteChanged`シグナルの発行を助ける`CommandManager`の試作プロジェクト
+
+# ObservableProperty
+
+- STEP 1: ObservableProperty
+    - QML側に公開するプロパティクラスの試作プロジェクト
