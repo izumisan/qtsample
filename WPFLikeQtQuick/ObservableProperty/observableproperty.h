@@ -39,7 +39,7 @@ public:
     }
     virtual ~ObservableProperty() = default;
 
-public:
+protected:
     virtual QString valueProperty() const override
     {
         return m_getter( m_data );
@@ -62,13 +62,16 @@ public:
 
     void setData( const T& data )
     {
-        m_data = data;
+        if ( m_data != data )
+        {
+            m_data = data;
+            raiseValuePropertyChanged();
+        }
     }
 
 private:
     T m_data = {};
     std::function<QString(const T&)> m_getter = [](const T& data){ return data; };
-    //std::function<void(T&, const QString&)> m_setter = [](T& data, const QString& value){ /*TODO*/ };
     std::function<void(T&, const QString&)> m_setter = nullptr;
 };
 

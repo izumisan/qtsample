@@ -19,5 +19,14 @@ Window {
 
         Label { text: vm.foo.value }
         Label { text: vm.foo2.value }
+        SpinBox {
+            value: vm.foo3.value
+            onValueChanged: vm.foo3.value = value
+        }
+
+        Button {
+            text: "qdebug"
+            onClicked: vm.printdebug()
+        }
     }
 }
