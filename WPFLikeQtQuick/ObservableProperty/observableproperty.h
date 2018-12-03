@@ -13,25 +13,25 @@ public:
         : ObservablePropertyBase( parent )
     {
     }
-    ObservableProperty( const T& data,
+    ObservableProperty( const T& value,
                         QObject* parent = nullptr )
-        : m_data( data )
+        : m_value( value )
         , ObservablePropertyBase( parent )
     {
     }
-    ObservableProperty( const T& data,
-                        const std::function<QString(const T&)>& getter,
+    ObservableProperty( const T& value,
+                        const std::function<QVariant(const T&)>& getter,
                         QObject* parent = nullptr )
-        : m_data( data )
+        : m_value( value )
         , m_getter( getter )
         , ObservablePropertyBase( parent )
     {
     }
-    ObservableProperty( const T& data,
-                        const std::function<QString(const T&)>& getter,
-                        const std::function<void(T&, const QString&)>& setter,
+    ObservableProperty( const T& value,
+                        const std::function<QVariant(const T&)>& getter,
+                        const std::function<void(T&, const QVariant&)>& setter,
                         QObject* parent = nullptr )
-        : m_data( data )
+        : m_value( value )
         , m_getter( getter )
         , m_setter( setter )
         , ObservablePropertyBase( parent )
@@ -40,39 +40,39 @@ public:
     virtual ~ObservableProperty() = default;
 
 protected:
-    virtual QString valueProperty() const override
+    virtual QVariant valueProperty() const override
     {
-        return m_getter( m_data );
+        return m_getter( m_value );
     }
 
-    virtual void setValueProperty( const QString& value ) override
+    virtual void setValueProperty( const QVariant& value ) override
     {
         if ( ( valueProperty() != value ) && ( m_setter != nullptr ) )
         {
-            m_setter( m_data, value );
+            m_setter( m_value, value );
             raiseValuePropertyChanged();
         }
     }
 
 public:
-    T data() const
+    T value() const
     {
-        return m_data;
+        return m_value;
     }
 
-    void setData( const T& data )
+    void setValue( const T& data )
     {
-        if ( m_data != data )
+        if ( m_value != data )
         {
-            m_data = data;
+            m_value = data;
             raiseValuePropertyChanged();
         }
     }
 
 private:
-    T m_data = {};
-    std::function<QString(const T&)> m_getter = [](const T& data){ return data; };
-    std::function<void(T&, const QString&)> m_setter = nullptr;
+    T m_value = {};
+    std::function<QVariant(const T&)> m_getter = [](const T& value){ return value; };
+    std::function<void(T&, const QVariant&)> m_setter = nullptr;
 };
 
 #endif // OBSERVABLEPROPERTY_H

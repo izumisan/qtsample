@@ -16,12 +16,10 @@ public:
     explicit MainViewModel( QObject* parent = nullptr )
         : QObject( parent )
         , m_foo( "foo", parent )
-        , m_foo2( 20,
-                  [](const int& data){ return QString("%1").arg( data ); },
-                  parent)
+        , m_foo2( 20, parent)
         , m_foo3( 30,
-                  [](const int& data){ return QString("%1").arg( data ); },
-                  [](int& data, const QString& value){ data = value.toInt(); },
+                  [](const int& value){ return value; },
+                  [](int& value, const QVariant& newValue){ value = newValue.toInt(); },
                   parent)
     {
     }
@@ -29,7 +27,7 @@ public:
 public slots:
     void printdebug() const
     {
-        qDebug() << m_foo.data() << m_foo2.data() << m_foo3.data();
+        qDebug() << m_foo.value() << m_foo2.value() << m_foo3.value();
     }
 
 public:
