@@ -18,3 +18,6 @@ QtQuickでMVVM（WPF）するための部品を試作する検討用プロジェ
 
 - STEP 1: ObservableProperty
     - QML側に公開するプロパティクラスの試作プロジェクト
+- STEP 2: ObservableProperty2
+    - `ObservableProperty<T>`にカスタムクラスを指定した動作確認
+    - ObservableProperty用getter/setterを提供するヘルパークラスの試作
