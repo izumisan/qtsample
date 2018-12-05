@@ -21,3 +21,5 @@ QtQuickでMVVM（WPF）するための部品を試作する検討用プロジェ
 - STEP 2: ObservableProperty2
     - `ObservableProperty<T>`にカスタムクラスを指定した動作確認
     - ObservableProperty用getter/setterを提供するヘルパークラスの試作
+- STEP 3: ObservableProperty3
+    - `ObservableProperty<T>`に`subscribe()`, `unsubscribe()`を追加したサンプル
