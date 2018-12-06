@@ -4,54 +4,37 @@
 #include <memory>
 #include <QObject>
 #include <QDebug>
-#include "observableproperty.h"
+#include "observablecollection.h"
 
 class MainViewModel : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY( ObservablePropertyBase* ivalue READ ivalue CONSTANT )
-    Q_PROPERTY( ObservablePropertyBase* ivalue2 READ ivalue2 CONSTANT )
+    Q_PROPERTY( ObservableCollectionBase* ivalues READ ivalues CONSTANT )
 
 public:
     explicit MainViewModel( QObject* parent = nullptr )
         : QObject( parent )
-        , m_ivalue( ObservablePropertyHelper<int>::getter(),
-                    ObservablePropertyHelper<int>::setter(),
-                    parent )
-        , m_ivalue2( ObservablePropertyHelper<int>::getter(),
-                     parent)
+        , m_ivalues( { 10, 11, 12 },
+                     { ObservableCollectionRole<int>( "foo", ObservablePropertyHelper<int>::getter(), nullptr ) },
+                     parent )
     {
     }
     virtual ~MainViewModel() = default;
 
 public slots:
-    void onSubscribe()
-    {
-        m_actid = m_ivalue.subscribe( [this](const int& value)
-        {
-            m_ivalue2.setValue( value + 1 );
-        } );
-    }
-
-    void onUnsubscribe()
-    {
-        m_ivalue.unsubscribe( m_actid );
-        m_actid = 0;
-    }
-
     void printdebug() const
     {
-        qDebug() << m_ivalue.value() << m_ivalue2.value();
+        for ( int i = 0; i < m_ivalues.count(); ++i )
+        {
+            qDebug() << m_ivalues.valueAt( i );
+        }
     }
 
 public:
-    ObservableProperty<int>* ivalue() { return &m_ivalue; }
-    ObservableProperty<int>* ivalue2() { return &m_ivalue2; }
+    ObservableCollection<int>* ivalues() { return &m_ivalues; }
 
 private:
-    ObservableProperty<int> m_ivalue;
-    ObservableProperty<int> m_ivalue2;
-    int m_actid = 0;
+    ObservableCollection<int> m_ivalues;
 };
 
 #endif // MAINVIEWMODEL_H

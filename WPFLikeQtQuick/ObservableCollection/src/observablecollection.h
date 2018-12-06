@@ -3,14 +3,24 @@
 
 #include <functional>
 #include "observablecollectionbase.h"
-
+#include "observablecollectionrole.h"
+#include "observablepropertyhelper.h"
+#include <QDebug>
 template<class T>
 class ObservableCollection : public ObservableCollectionBase
 {
 public:
-    ObservableCollection( QObject* parent = nullptr )
+    ObservableCollection( const QList<T>& values,
+                          const QList<ObservableCollectionRole<T>>& roles,
+                          QObject* parent = nullptr )
         : ObservableCollectionBase( parent )
+//        , m_values( values )
+        , m_roles( roles )
     {
+        for ( auto&& x: values )
+        {
+            append( x );
+        }
     }
     virtual ~ObservableCollection() = default;
 
@@ -23,12 +33,19 @@ public:
 
     virtual QVariant data( const QModelIndex& index, int role = Qt::DisplayRole ) const override
     {
+        qDebug() << __func__;
         auto&& ret = QVariant();
         if ( index.isValid() )
         {
             constexpr int roleOffset = Qt::UserRole + 1;
-            auto&& dataIndex = role - roleOffset;
-            ret = m_getters.at( dataIndex )( m_values.at( dataIndex ) );
+            auto&& roleIndex = role - roleOffset;
+            if ( ( 0 <= roleIndex ) && ( roleIndex < m_roles.size() ) )
+            {
+                auto&& getter = m_roles.at( roleIndex ).getter();
+                ret = getter( m_values.at( index.row() ) );
+
+                qDebug() << role << index.row() << ret;
+            }
         }
         return ret;
     }
@@ -41,16 +58,24 @@ protected:
         for ( int i = 0; i < m_roles.size(); ++i )
         {
             auto&& role = roleOffset + i;
-            ret.insert( role, m_roles.at( i ) );
+            ret.insert( role, m_roles.at( i ).roleName().toStdString().c_str() );
         }
         return ret;
     }
 
+public:
+    void append( const T& value )
+    {
+        beginInsertRows( QModelIndex(), rowCount(), rowCount() );
+        m_values.append( value );
+        endInsertRows();
+    }
+    T valueAt( const int& index ) const { return m_values.at( index ); }
+    int count() const { return m_values.count(); }
+
 private:
     QList<T> m_values = {};
-    QList<QString> m_roles = {};
-    QList<std::function<QVariant(const T&)>> m_getters = {};
-    QList<std::function<void(T&, const QVariant&)>> m_setters = {};
+    QList<ObservableCollectionRole<T>> m_roles = {};
 };
 
 #endif // OBSERVABLECOLLECTION_H
