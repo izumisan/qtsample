@@ -13,25 +13,19 @@ Window {
     MainViewModel { id: vm }
 
     ColumnLayout {
-//        anchors.horizontalCenter: parent.horizontalCenter
-//        anchors.verticalCenter: parent.verticalCenter
-        anchors.fill: parent
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
 
         ListView {
-            anchors.fill: parent
-//            Layout.alignment: Qt.AlignHCenter
-            model: vm.ivalues
-//            model: ListModel {
-//                ListElement { foo: "1" }
-//                ListElement { foo: "2" }
-//                ListElement { foo: "3" }
-//                ListElement { foo: "3" }
-//                ListElement { foo: "3" }
-//                ListElement { foo: "3" }
-//            }
+            height: contentHeight
+            width: contentWidth
 
-            delegate: ItemDelegate {
-                text: index + ":" + foo
+            model: vm.ivalues
+
+            delegate: SpinBox {
+                value: model.ivalue
+                onValueChanged: model.ivalue = value
             }
         }
 

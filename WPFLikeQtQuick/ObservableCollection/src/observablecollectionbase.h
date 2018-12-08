@@ -18,7 +18,6 @@ public:
 protected:
     virtual QHash<int, QByteArray> roleNames() const override = 0;
 
-private:
     virtual void raiseDataChanged( const QModelIndex& topLeft, const QModelIndex& bottomRight, const QVector<int>& roles = QVector<int>() );
 };
 

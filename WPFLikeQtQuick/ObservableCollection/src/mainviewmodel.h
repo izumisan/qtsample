@@ -15,7 +15,10 @@ public:
     explicit MainViewModel( QObject* parent = nullptr )
         : QObject( parent )
         , m_ivalues( { 10, 11, 12 },
-                     { ObservableCollectionRole<int>( "foo", ObservablePropertyHelper<int>::getter(), nullptr ) },
+                     { ObservableCollectionRole<int>(
+                         "ivalue",
+                         ObservablePropertyHelper<int>::getter(),
+                         ObservablePropertyHelper<int>::setter() ) },
                      parent )
     {
     }
@@ -26,7 +29,7 @@ public slots:
     {
         for ( int i = 0; i < m_ivalues.count(); ++i )
         {
-            qDebug() << m_ivalues.valueAt( i );
+            qDebug() << m_ivalues.value( i );
         }
     }
 
