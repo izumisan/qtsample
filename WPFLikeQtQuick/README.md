@@ -23,3 +23,9 @@ QtQuickでMVVM（WPF）するための部品を試作する検討用プロジェ
     - ObservableProperty用getter/setterを提供するヘルパークラスの試作
 - STEP 3: ObservableProperty3
     - `ObservableProperty<T>`に`subscribe()`, `unsubscribe()`を追加したサンプル
+
+# ObservableCollection
+
+- STEP 1: ObservableCollection
+    - QAbstractListModel型のテンプレートクラスの試作
+
