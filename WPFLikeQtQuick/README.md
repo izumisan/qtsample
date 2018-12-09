@@ -28,4 +28,5 @@ QtQuickでMVVM（WPF）するための部品を試作する検討用プロジェ
 
 - STEP 1: ObservableCollection
     - QAbstractListModel型のテンプレートクラスの試作
-
+- STEP 2: ObservableCollection2
+    - `ObservableCollection<T>`にカスタムクラスを指定した動作確認＆アップデート
