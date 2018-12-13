@@ -4,6 +4,7 @@
 # ホワイトリスト
 !/JavaScriptLinkage/
 !/QChartSample/
+!/QMake/
 !/QtQuickApp/
 !/QtQuickPractice/
 !/QtTestSample/
