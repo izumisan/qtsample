@@ -12,13 +12,21 @@ Window {
 
     MainViewModel { id: vm }
 
-    Button {
-        text: vm.value.value
+    ColumnLayout {
         anchors.centerIn: parent
 
-        onClicked: {
-            ++vm.value.value
-            vm.printdebug()
+        Button {
+            text: vm.ivalue.value
+            onClicked: {
+                vm.onClicked1()
+            }
+        }
+
+        Button {
+            text: vm.dvalue.value.toFixed(3)
+            onClicked: {
+                vm.onClicked2()
+            }
         }
     }
 }
