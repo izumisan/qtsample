@@ -8,6 +8,8 @@ QtQcuickでアニメーションのサンプル
     - `NumberAnimation`でフォントサイズをアニメーションさせる単純なサンプル
 - AnimationSample2
     - `Behavior`エレメントで、プロパティ変化にアニメーションを実行するサンプル
+- AnimationSample3
+    - `Transition`エレメントで、状態遷移にアニメーションを実行するサンプル
 
 
 <!--
