@@ -10,6 +10,8 @@ QtQcuickでアニメーションのサンプル
     - `Behavior`エレメントで、プロパティ変化にアニメーションを実行するサンプル
 - AnimationSample3
     - `Transition`エレメントで、状態遷移にアニメーションを実行するサンプル
+- AnimationSample4
+    - `Transition`エレメントの`from`, `to`プロパティで、アニメーションを実行する状態遷移に条件付けしたサンプル
 
 
 <!--
