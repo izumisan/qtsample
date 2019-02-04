@@ -2,6 +2,7 @@
 /*/
 
 # ホワイトリスト
+!/AnimationSample/
 !/DragAndDropSample/
 !/JavaScriptLinkage/
 !/QChartSample/
