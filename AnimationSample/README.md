@@ -12,6 +12,8 @@ QtQcuickでアニメーションのサンプル
     - `Transition`エレメントで、状態遷移にアニメーションを実行するサンプル
 - AnimationSample4
     - `Transition`エレメントの`from`, `to`プロパティで、アニメーションを実行する状態遷移に条件付けしたサンプル
+- AnimationSample5
+    - `SequentialAnimation`, `ParallelAnimation`で、複数のアニメーションを組み合わせて実行したサンプル
 - AnimationControl
     - アニメーション実行を制御するサンプル
 
