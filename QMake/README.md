@@ -4,8 +4,10 @@
 
 - FileCopy
     - ファイルコピーコマンドの試作プロジェクト
+    - qmake変数やqmake関数の動作確認用
 - FileCopy2
-
+    - ファイルコピーコマンドの試作プロジェクト
+    - FileCopyからの改良版
 
 # Memo
 
