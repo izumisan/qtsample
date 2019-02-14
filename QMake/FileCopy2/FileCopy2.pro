@@ -9,8 +9,7 @@ SOURCES += \
 OTHER_FILES += \
     foo1.txt \
     foo2.txt \
-    bar/bar1.txt \
-    bar/bar2.txt
+    bar/bar1.txt
 
 defineReplace(copyCommand2) {
     src = $$1
@@ -38,6 +37,7 @@ foo2.commands = $$copyCommand2($$foo2.depends, $$foo2.target)
 QMAKE_EXTRA_TARGETS += foo2
 PRE_TARGETDEPS += $$foo2.target
 
+# $${OUT_PWD}/bar/が存在していれば、以下の設定でbar1.txtはコピーされる
 #bar1.depends = $${PWD}/bar/bar1.txt
 #bar1.target = $${OUT_PWD}/bar/bar1.txt
 #bar1.commands = $$copyCommand2($$bar1.depends, $$bar1.target)
