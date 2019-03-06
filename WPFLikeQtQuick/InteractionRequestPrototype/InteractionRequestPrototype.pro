@@ -1,5 +1,5 @@
 QT += quick
-CONFIG += c++11
+CONFIG += c++17
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
@@ -14,9 +14,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 INCLUDEPATH += $${PWD}/src
 
-HEADERS += src/*.h
-SOURCES += main.cpp
-SOURCES += src/*.cpp
+HEADERS += \
+    src/*.h
+
+SOURCES += \
+    main.cpp \
+    src/*.cpp
 
 RESOURCES += qml.qrc
 
@@ -30,3 +33,5 @@ QML_DESIGNER_IMPORT_PATH =
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+msvc: QMAKE_CXXFLAGS += /source-charset:utf-8

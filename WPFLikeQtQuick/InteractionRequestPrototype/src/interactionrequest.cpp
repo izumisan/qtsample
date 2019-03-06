@@ -7,29 +7,32 @@ InteractionRequest::InteractionRequest( QObject* parent )
 
 void InteractionRequest::raise( const std::shared_ptr<Confirmation>& context )
 {
-    raise( context, [](const std::shared_ptr<Confirmation>&){} );
-}
-
-void InteractionRequest::raise( const std::shared_ptr<Confirmation>& context, const std::function<void(const std::shared_ptr<Confirmation>&)>& onClosed )
-{
     m_context = context;
     emit contextChanged();
 
-    m_closedAction = onClosed;
+    emit raised();
+}
 
-    if ( m_context )
+void InteractionRequest::raise( const std::shared_ptr<Confirmation>& context,
+                                const std::function<void(const std::shared_ptr<Confirmation>&)>& acceptedAction )
+{
+    setAcceptedAction( acceptedAction );
+    raise( context );
+}
+
+void InteractionRequest::raise( const std::shared_ptr<Confirmation>& context,
+                                const std::function<void(const std::shared_ptr<Confirmation>&)>& acceptedAction,
+                                const std::function<void(const std::shared_ptr<Confirmation>&)>& rejectedAction )
+{
+    setAcceptedAction( acceptedAction );
+    setRejectedAction( rejectedAction );
+    raise( context );
+}
+
+void InteractionRequest::invoke( const std::function<void(const std::shared_ptr<Confirmation>&)>& action ) const
+{
+    if ( action )
     {
-        connect( m_context.get(),
-                 &Confirmation::done,
-                 this,
-                 [this]
-        {
-            if ( m_closedAction != nullptr )
-            {
-                m_closedAction( m_context );
-            }
-        } );
-
-        emit raised();
+        action( m_context );
     }
 }

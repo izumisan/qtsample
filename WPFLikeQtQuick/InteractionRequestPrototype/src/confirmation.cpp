@@ -45,21 +45,26 @@ void Confirmation::setContent( const QVariant& value )
     }
 }
 
-bool Confirmation::confirmed() const
+int Confirmation::resultCode() const
 {
-    return m_confirmed;
+    return m_resultCode;
 }
 
-void Confirmation::close( const int resultCode )
+void Confirmation::setResultCode( const int& value )
 {
-    if ( resultCode != 0 )
+    if ( m_resultCode != value )
     {
-        m_confirmed = true;
+        m_resultCode = value;
+        emit resultCodeChanged();
     }
-    else
-    {
-        m_confirmed = false;
-    }
+}
 
-    emit done( resultCode );
+bool Confirmation::isAccepted() const
+{
+    return ( m_resultCode == 1 );
+}
+
+bool Confirmation::isRejected() const
+{
+    return ( m_resultCode == 0 );
 }

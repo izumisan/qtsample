@@ -10,10 +10,11 @@ class Confirmation : public QObject
     Q_OBJECT
     Q_PROPERTY( QString title READ title NOTIFY titleChanged )
     Q_PROPERTY( QVariant content READ content WRITE setContent NOTIFY contentChanged )
+    Q_PROPERTY( int resultCode READ resultCode WRITE setResultCode NOTIFY resultCodeChanged )
 signals:
     void titleChanged() const;
     void contentChanged() const;
-    void done( const int resultCode );
+    void resultCodeChanged() const;
 
 public:
     explicit Confirmation( QObject* parent = nullptr );
@@ -26,15 +27,17 @@ public:
     void setTitle( const QString& value );
     QVariant content() const;
     void setContent( const QVariant& value );
-    bool confirmed() const;
+    int resultCode() const;
+    void setResultCode( const int& value );
 
-public slots:
-    void close( const int resultCode );
+public:
+    bool isAccepted() const;
+    bool isRejected() const;
 
 private:
     QString m_title = {};
     QVariant m_content = {};
-    bool m_confirmed = false;
+    int m_resultCode = 0;
 };
 
 #endif // CONFIRMATION_H
