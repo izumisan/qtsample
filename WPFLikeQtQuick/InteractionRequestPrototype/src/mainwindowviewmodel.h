@@ -22,15 +22,13 @@ public:
 public slots:
     void open()
     {
-        auto&& context = std::make_shared<Confirmation>( u8"たいとる", u8"こんてんつ" );
-//        m_interactionRequest->raise( context );
-//        m_interactionRequest->raise(
-//            context,
-//            [this](auto&&){ qDebug() << "Accepted"; } );
-        m_interactionRequest->raise(
-            context,
-            [this](auto&& c){ qDebug() << "Accepted" << "result:" << c->resultCode(); },
-            [this](auto&& c){ qDebug() << "Rejected" << "result:" << c->resultCode(); } );
+        qDebug() << __func__;
+        static int count = 0;
+        auto&& context = std::make_shared<Confirmation>( QString("たいとる %1").arg( ++count ), "こんてんつ" );
+        context->setAcceptedAction( [context]{ qDebug() << "Accepted:" << "result:" << context->resultCode(); } );
+        context->setRejectedAction( [context]{ qDebug() << "Rejected:" << "result:" << context->resultCode(); } );
+
+        m_interactionRequest->raise( context );
     }
 
 private:

@@ -1,3 +1,4 @@
+#include <QDebug>
 #include "confirmation.h"
 
 Confirmation::Confirmation( QObject* parent )
@@ -67,4 +68,12 @@ bool Confirmation::isAccepted() const
 bool Confirmation::isRejected() const
 {
     return ( m_resultCode == 0 );
+}
+
+void Confirmation::invoke( const std::function<void()>& action ) const
+{
+    if ( action )
+    {
+        action();
+    }
 }

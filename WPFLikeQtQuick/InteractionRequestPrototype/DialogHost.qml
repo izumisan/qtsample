@@ -11,15 +11,28 @@ Item {
     Connections {
         target: interactionRequest
         onRaised: {
-            interactionRequest.context.resultCode = 0
+            console.log( "onRaised" )
+            dialog.result = 0
             dialog.open()
         }
     }
 
     Connections {
         target: dialog
-        onResultChanged: interactionRequest.context.resultCode = dialog.result
-        onAccepted: interactionRequest.accepted()
-        onRejected: interactionRequest.rejected()
+        onResultChanged: {
+            console.log("onResultChanged:" + dialog.result)
+            interactionRequest.context.resultCode = dialog.result
+        }
+        onAccepted: {
+            console.log("onAccepted")
+            interactionRequest.context.accepted()
+        }
+        onRejected: {
+            console.log( "onRejected" )
+            interactionRequest.context.rejected()
+        }
+        onClosed: {
+            console.log( "onClosed" )
+        }
     }
 }

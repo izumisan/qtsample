@@ -12,27 +12,3 @@ void InteractionRequest::raise( const std::shared_ptr<Confirmation>& context )
 
     emit raised();
 }
-
-void InteractionRequest::raise( const std::shared_ptr<Confirmation>& context,
-                                const std::function<void(const std::shared_ptr<Confirmation>&)>& acceptedAction )
-{
-    setAcceptedAction( acceptedAction );
-    raise( context );
-}
-
-void InteractionRequest::raise( const std::shared_ptr<Confirmation>& context,
-                                const std::function<void(const std::shared_ptr<Confirmation>&)>& acceptedAction,
-                                const std::function<void(const std::shared_ptr<Confirmation>&)>& rejectedAction )
-{
-    setAcceptedAction( acceptedAction );
-    setRejectedAction( rejectedAction );
-    raise( context );
-}
-
-void InteractionRequest::invoke( const std::function<void(const std::shared_ptr<Confirmation>&)>& action ) const
-{
-    if ( action )
-    {
-        action( m_context );
-    }
-}
