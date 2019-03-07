@@ -35,3 +35,8 @@ QtQuickでMVVM（WPF）するための部品を試作する検討用プロジェ
 
 - ViewModelBase
     - ViewModelBaseクラスの試作
+
+# InteractionRequest
+
+- InteractionRequestPrototype
+    - Messengerによるダイアログサービスの試作プロジェクト
