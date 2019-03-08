@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>DialogHost.qml</file>
+        <file>DialogLoader.qml</file>
+        <file>FooDialog.qml</file>
+    </qresource>
+</RCC>
