@@ -40,3 +40,6 @@ QtQuickでMVVM（WPF）するための部品を試作する検討用プロジェ
 
 - InteractionRequestPrototype
     - Messengerによるダイアログサービスの試作プロジェクト
+- InteractionRequestPrototype2
+    - Messengerによるダイアログサービスの試作プロジェクト その2
+    - ダイアログを動的に生成する
