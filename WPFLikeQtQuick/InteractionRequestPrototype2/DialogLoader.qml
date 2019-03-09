@@ -14,8 +14,8 @@ Item {
         var component = Qt.createComponent( source )
         if( component.status === Component.Ready ) {
             dialog = component.createObject( _loader )
-//            dialog.title = title
-//            dialog.contentItem = contentItem
+            dialog.title = title
+            dialog.contentItem = contentItem
             dialog.open()
         } else {
             console.error( component.errorString() )
@@ -30,15 +30,6 @@ Item {
         onRaised: {
             console.log( "onRaised" )
             open()
-        }
-    }
-
-    Connections {
-        target: dialog
-        onOpened: {
-            console.log("onOpened")
-            dialog.title = title
-//            dialog.contentItem = contentItem
         }
     }
 
@@ -59,6 +50,7 @@ Item {
         }
         onClosed: {
             console.log( "onClosed" )
+            dialog.destroy()
         }
     }
 }

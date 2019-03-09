@@ -11,18 +11,6 @@ Window {
 
     MainWindowViewModel { id: _viewmodel }
 
-//    DialogHost {
-//        anchors.centerIn: parent
-
-//        interactionRequest: _viewmodel.interactionRequest
-//        dialog: Dialog {
-//            width: 200
-//            title: _viewmodel.interactionRequest.context.title
-//            contentItem: Text { text: _viewmodel.interactionRequest.context.content }
-//            standardButtons: Dialog.Ok | Dialog.Cancel
-//        }
-//    }
-
     DialogLoader {
         id: _loader
         anchors.centerIn: parent
@@ -31,8 +19,13 @@ Window {
         source: "qrc:FooDialog.qml"
 
         property var context: _viewmodel.interactionRequest.context
-        title: context.title
-//        contentItem: Text { text: context.content }
+        property var dialogContent: Text { }
+
+        onContextChanged: {
+            title = context.title
+            dialogContent.text = context.content
+            contentItem = dialogContent
+        }
     }
 
     Button {
