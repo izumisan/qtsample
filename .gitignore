@@ -4,6 +4,7 @@
 # ホワイトリスト
 !/AnimationSample/
 !/DialogSample/
+!/DLLSample/
 !/DragAndDropSample/
 !/JavaScriptLinkage/
 !/QChartSample/
