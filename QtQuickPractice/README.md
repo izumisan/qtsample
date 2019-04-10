@@ -38,6 +38,8 @@
     - `QAbstractListModel`のサブクラス自体をQML側に登録（`qmlRegisterType`）したパターン
 - SingletonTypeProvider
     - `qmlRegisterSingletonType`により、QML内でのシングルトンクラスとして登録したサンプル
+- CppEnumProvider
+    - C++で定義した列挙型をQML側で利用できるようにしたサンプル
 - JsonOnQML
     - C++側からJSON文字列をQML側に公開
     - QML側でJSON文字列をパースして利用
