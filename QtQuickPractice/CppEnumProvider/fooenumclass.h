@@ -16,6 +16,11 @@ public:
         Foo_2,
         Foo_3
     };
+
+    // Q_ENUMマクロで列挙型をMetaObjectSystemに登録する
+    // qmlRegisterUncreatableTypeでFooEnumClassをQMLに公開することにより
+    // QML側でFooEnumが使用できる
+    // scoped-enum(enum class)も利用可能
     Q_ENUM( FooEnum )
 };
 
