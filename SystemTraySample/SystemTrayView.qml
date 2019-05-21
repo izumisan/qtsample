@@ -6,6 +6,11 @@ SystemTrayIcon {
     visible: true
     iconSource: "qrc:/images/octcat.png"
     tooltip: qsTr("システムトレイさんぷる")
+
+    //@@@ Memo:
+    // 現状、一度表示したメニューはメニューアイテムをクリックしないと消去されない...
+    // メニュー消去のためのコードが必要???
+
     menu: Menu {
         id: _menu
         MenuItem {
