@@ -9,6 +9,8 @@
 
 # 実行順序
 
+![実行順序](images/act.qtestmethod.png)
+
 - initTestCase()
     - init()
     - テストメソッド_1
