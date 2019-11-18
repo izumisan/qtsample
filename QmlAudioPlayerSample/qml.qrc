@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>voice/voice1.mp3</file>
+        <file>voice/voice2.mp3</file>
+    </qresource>
+</RCC>
