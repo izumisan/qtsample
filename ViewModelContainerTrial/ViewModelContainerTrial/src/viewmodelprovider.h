@@ -9,6 +9,7 @@ class ViewModelProvider : public QObject
     Q_OBJECT
 public:
     explicit ViewModelProvider( QObject* parent = nullptr )
+        : QObject( parent )
     {
     }
     virtual ~ViewModelProvider() = default;
@@ -16,8 +17,7 @@ public:
 public slots:
     QObject* viewModel( const QString& key )
     {
-//        return ViewModelContainer::instance()->get<QObject>( key ).get();
-        return ViewModelContainer::instance()->getA( key );
+        return ViewModelContainer::instance()->get<QObject>( key ).get();
     }
 };
 

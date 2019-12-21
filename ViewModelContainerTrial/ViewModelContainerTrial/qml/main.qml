@@ -8,30 +8,30 @@ Window {
     visible: true
     width: 640
     height: 480
-    title: qsTr("Hello World")
+    title: qsTr("ViewModelContainer Trial")
 
-    property var _foo: ViewModelProvider.viewModel( "foo" )
-    property var _bar: ViewModelProvider.viewModel( "bar" )
+    property FooViewModel _fooVM: ViewModelProvider.viewModel( "FooViewModel" )
+    property BarViewModel _barVM: ViewModelProvider.viewModel( "BarViewModel" )
 
     Column {
         anchors.centerIn: parent
         spacing: 8
 
         Label {
-            text: "Foo"
+            text: "FooViewModel"
             font.pointSize: 12
         }
         SpinBox {
-            value: _foo.value
-            onValueChanged: _foo.value = value
+            value: _fooVM.value
+            onValueChanged: _fooVM.value = value
         }
 
         Label {
-            text: "Bar"
+            text: "BarViewModel"
             font.pointSize: 12
         }
         SpinBox {
-            value: _bar.value
+            value: _barVM.value
             enabled: false
         }
     }

@@ -2,7 +2,6 @@
 #define FOOVIEWMODEL_H
 
 #include <QObject>
-#include <QDebug>
 
 class FooViewModel : public QObject
 {
@@ -17,10 +16,7 @@ public:
     {
     }
 
-    virtual ~FooViewModel()
-    {
-        qDebug() << "FooViewModel::dtor.";
-    }
+    virtual ~FooViewModel() = default;
 
 public:
     int value() const { return m_value; }

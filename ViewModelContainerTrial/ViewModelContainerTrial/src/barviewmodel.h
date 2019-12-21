@@ -2,7 +2,6 @@
 #define BARVIEWMODEL_H
 
 #include <QObject>
-#include <QDebug>
 #include "viewmodelcontainer.h"
 #include "fooviewmodel.h"
 
@@ -17,17 +16,17 @@ public:
     explicit BarViewModel( QObject* parent = nullptr )
         : QObject( parent )
     {
-        auto&& foo = ViewModelContainer::instance()->get<FooViewModel>( "foo" );
-        connect( foo.get(),
-                 &FooViewModel::valueChanged,
-                 this,
-                 [this](auto&& value){ setValue( value ); } );
+        auto&& foo = ViewModelContainer::instance()->get<FooViewModel>( "fooviewmodel" );
+        if ( foo )
+        {
+            connect( foo.get(),
+                     &FooViewModel::valueChanged,
+                     this,
+                     [this](auto&& value){ setValue( value ); } );
+        }
     }
 
-    virtual ~BarViewModel()
-    {
-        qDebug() << "BarViewModel::dtor.";
-    }
+    virtual ~BarViewModel() = default;
 
 public:
     int value() const { return m_value; }

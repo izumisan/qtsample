@@ -10,11 +10,9 @@ int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-    {
-        auto&& container = ViewModelContainer::instance();
-        container->registerInstance<FooViewModel>( std::make_shared<FooViewModel>(), "foo" );
-        container->registerInstance<BarViewModel>( std::make_shared<BarViewModel>(), "bar" );
-    }
+    auto&& container = ViewModelContainer::instance();
+    container->registerInstance<FooViewModel>( std::make_shared<FooViewModel>() );
+    container->registerInstance<BarViewModel>( std::make_shared<BarViewModel>() );
 
     QGuiApplication app(argc, argv);
 

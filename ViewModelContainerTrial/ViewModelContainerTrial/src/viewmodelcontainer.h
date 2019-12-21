@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <type_traits>
+#include <typeinfo>
 #include <memory>
 #include <cassert>
 #include <QMap>
@@ -22,43 +23,54 @@ public:
         static std::unique_ptr<ViewModelContainer>&& singleton = std::make_unique<ctor_permission>();
         return singleton;
     }
+
 private:
-    ViewModelContainer()
-        : QObject()
-    {
-    }
+    ViewModelContainer() = default;
 public:
-    virtual ~ViewModelContainer()
-    {
-    }
+    virtual ~ViewModelContainer() = default;
 
     template <class ViewModelType>
-    void registerInstance( const std::shared_ptr<ViewModelType>& vm, const QString& key = "" )
+    void registerInstance( const std::shared_ptr<ViewModelType>& vm, const QString& name = "" )
     {
         if ( std::is_base_of<QObject, ViewModelType>::value )
         {
-            if ( key.isEmpty() != true )
+            auto key = name;
+            if ( key.isEmpty() )
             {
+                key = QString( typeid(ViewModelType).name() ).replace( "class ", "" ).toLower();
+            }
+
+            if ( m_vms.find( key ) == m_vms.cend() )
+            {
+                // 親オブジェクトが設定されていない場合は、ViewModelContainerを親に設定する
+                // 親オブジェクトが未設定のままだと、QMLエレメントの破壊時に連動してdeleteされしまい、shared_ptrのdelete時に2重deleteでエラーとなる
+                if ( vm->parent() == nullptr )
+                {
+                    vm->setParent( this );
+                }
                 m_vms.insert( key, vm );
+            }
+            else
+            {
+                qDebug() << QString(u8"%1 has already exists.").arg(key);
             }
         }
         else
         {
-            assert(!u8"ViewModelTypeはQObjectの必要があります" );
+            qDebug() << u8"ViewModelType need to be QObject subclass.";
         }
     }
 
     template <class ViewModelType>
-    std::shared_ptr<ViewModelType> get( const QString& key )
+    std::shared_ptr<ViewModelType> get( const QString& name )
     {
-        //@@@ keyチェック省略
-        return std::dynamic_pointer_cast<ViewModelType>( m_vms.value( key ) );
-    }
-
-    QObject* getA( const QString& key )
-    {
-        //@@@ keyチェック省略
-        return m_vms.value( key ).get();
+        std::shared_ptr<ViewModelType> ret {};
+        auto key = name.toLower();
+        if ( m_vms.find( key ) != m_vms.cend() )
+        {
+            ret = std::dynamic_pointer_cast<ViewModelType>( m_vms.value( key ) );
+        }
+        return ret;
     }
 
 private:
