@@ -1,0 +1,2 @@
+$env:PATH = "${runenv}" + ";" + $env:PATH
+OpenCppCoverage.exe --config_file=${configfile} --working_dir=${workingdir} -- ${testtarget}
