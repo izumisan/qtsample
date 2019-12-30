@@ -1,5 +1,5 @@
 # .gitignore
 
 /OpenCppCoverage-x64/
-/runenv
+/runcoverage.runenv
 /CoverageReport-*/

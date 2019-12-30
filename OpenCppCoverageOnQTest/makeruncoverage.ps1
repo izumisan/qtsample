@@ -2,11 +2,9 @@ Param( $workingDir, $testTarget )
 
 $scriptdir = $PSScriptRoot
 
-$templatefile = $scriptdir + "/runcoverage.template"
-$contents = Get-Content -Path $templatefile
+$contents = Get-Content -Path ($scriptdir + "/runcoverage.template")
 
-$runenvfile = $scriptdir + "/runenv"
-$runenv = Get-Content -Path $runenvfile
+$runenv = Get-Content -Path ($scriptdir + "/runcoverage.runenv")
 
 $contents = $contents.Replace( '${runenv}', $runenv )
 $contents = $contents.Replace( '${configfile}', $scriptdir + "/runcoverage.config" )
