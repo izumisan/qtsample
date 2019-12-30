@@ -2,7 +2,10 @@ Param( $workingDir, $testTarget )
 
 $scriptdir = $PSScriptRoot
 
-$contents = Get-Content -Path ($scriptdir + "/runcoverage.template")
+$contents = @'
+$env:PATH = "${runenv}" + ";" + $env:PATH
+OpenCppCoverage.exe --config_file=${configfile} --working_dir=${workingdir} -- ${testtarget}
+'@
 
 $runenv = Get-Content -Path ($scriptdir + "/runcoverage.runenv")
 
